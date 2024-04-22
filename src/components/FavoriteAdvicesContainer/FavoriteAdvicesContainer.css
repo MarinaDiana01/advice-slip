@@ -1,0 +1,35 @@
+.favorite-advice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.favorite-advice-id {
+  font-weight: 600;
+  color: var(--darkBlue);
+  margin: 4px 0px;
+}
+
+.favorite-advice-delete-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.favorite-advice-content {
+  margin-bottom: 4px;
+}
+
+.favorite-advice-date {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--grayishBlue);
+  -webkit-text-stroke: 0.3px var(--darkBlue);
+  margin-bottom: 16px;
+}
+
+.favorite-advice:last-child .favorite-advice-date {
+  margin-bottom: 0; 
+}
+
+

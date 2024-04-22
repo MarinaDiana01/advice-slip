@@ -1,0 +1,29 @@
+* {
+  margin: 0px;
+  font-family: 'Manrope', sans-serif;
+}
+
+:root {
+  --lightCyan: #cee3e9;
+  --neonGreen: #52ffa8;
+  --grayishBlue: #4e5d73;
+  --darkGrayishBlue: #323a49;
+  --darkBlue: #1f2632;
+}
+
+/* --- Loading spinner --- */
+.spinner {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 3.8px solid;
+  border-color: #babac1;
+  border-right-color: #000000;
+  animation: spinner-d3wgkg 0.8s infinite linear;
+}
+
+@keyframes spinner-d3wgkg {
+  to { 
+    transform: rotate(1turn); 
+  }
+}
