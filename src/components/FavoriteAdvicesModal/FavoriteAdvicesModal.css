@@ -18,8 +18,7 @@
   top: 60px;
   margin: 0 auto;
   background-color: var(--lightCyan);
-  width: 100%;
-  max-width: 400px;
+  width: 300px;
   height: 200px;
 
   padding: 24px;
@@ -53,4 +52,10 @@
   text-align: center;
   margin-top: 24px;
   color: var(--grayishBlue);
+}
+
+@media screen and (min-width: 768px) {
+  .favorite-advices-container {
+    width: 400px;
+  }
 }

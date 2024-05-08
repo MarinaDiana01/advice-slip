@@ -51,6 +51,11 @@
   margin-bottom: 24px;
 }
 
+.advice-content-spinner {
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
 .separator-container {
   display: flex;
   align-items: center;
@@ -96,3 +101,4 @@
   right: 4px;
   top: 8px;
 }
+
