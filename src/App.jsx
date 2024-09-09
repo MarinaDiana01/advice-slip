@@ -11,16 +11,14 @@ const App = () => {
   const [advice, setAdvice] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [favoriteAdvices, setFavoriteAdvices] = useState([]);
 
-  const favoriteAdvicesFromLocalStorage = JSON.parse(
-    localStorage.getItem('favoritedAdvicesLS'),
-  );
-
-  const [favoriteAdvices, setFavoriteAdvices] = useState(
-    favoriteAdvicesFromLocalStorage === null
-      ? []
-      : favoriteAdvicesFromLocalStorage,
-  );
+  useEffect(() => {
+    const storedFavorites =
+      JSON.parse(localStorage.getItem('favoritedAdvicesLS')) || [];
+    setFavoriteAdvices(storedFavorites);
+    getInitialAdvice();
+  }, []);
 
   const getInitialAdvice = async () => {
     const serverResponse = await fetch('https://api.adviceslip.com/advice');
@@ -31,10 +29,6 @@ const App = () => {
       content: data.slip.advice,
     });
   };
-
-  useEffect(() => {
-    getInitialAdvice();
-  }, []);
 
   const handleGenerateAdvice = async () => {
     setIsLoading(true);
@@ -64,7 +58,6 @@ const App = () => {
     const adviceIndex = getAdviceIndex();
 
     if (adviceIndex >= 0) {
-      // elimina advice
       const newFavoriteAdvices = [...favoriteAdvices];
       newFavoriteAdvices.splice(adviceIndex, 1);
 
@@ -74,7 +67,6 @@ const App = () => {
         JSON.stringify(newFavoriteAdvices),
       );
     } else {
-      // adauga advice
       const newFavoriteAdvices = [
         ...favoriteAdvices,
         {
@@ -93,16 +85,14 @@ const App = () => {
   };
 
   const removeAdviceFromFavorites = adviceId => {
-    // gaseste index-ul advice-ului al carui id il primim ca parametru
-    const adviceIndexInsideFavorites = favoriteAdvices.findIndex(
-      favoriteAdvice => favoriteAdvice.id === adviceId,
+    const newFavoriteAdvices = favoriteAdvices.filter(
+      favoriteAdvice => favoriteAdvice.id !== adviceId,
     );
-
-    const newFavoriteAdvices = [...favoriteAdvices];
-
-    newFavoriteAdvices.splice(adviceIndexInsideFavorites, 1);
-
     setFavoriteAdvices(newFavoriteAdvices);
+    localStorage.setItem(
+      'favoritedAdvicesLS',
+      JSON.stringify(newFavoriteAdvices),
+    );
   };
 
   const handleModalOpening = () => {
@@ -156,7 +146,7 @@ const App = () => {
           className="advice-button"
           disabled={isLoading === true ? true : false}
         >
-          {isLoading === true ? (
+          {isLoading ? (
             <div className="spinner"></div>
           ) : (
             <CasinoIcon fontSize={'large'} />
