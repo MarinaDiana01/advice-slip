@@ -20,7 +20,6 @@
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"/>
   <img src="https://img.shields.io/badge/Material_UI-007FFF?style=for-the-badge&logo=mui&logoColor=white" alt="Material UI"/>
 </div>
-<br>
 
 ## Key Features
 
@@ -28,7 +27,6 @@
 - Interface design was created to ensure simple and efficient navigation, with well-defined buttons and accessible functionalities
 - Implemented a feature that allows users to add and save favorite advice in a centralized location. They can quickly access these favorites and remove them if they are no longer of interest
 - It is optimized to be fully responsive
-<br>
 
 ## Getting Started
 
